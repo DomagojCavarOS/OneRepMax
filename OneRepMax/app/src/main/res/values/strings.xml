@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">OneRepMax</string>
+    <string-array name="gymExercises">
+        <item>Bench Press</item>
+        <item>Bent Over Row</item>
+        <item>Shoulder Press</item>
+        <item>Lat Pulldown</item>
+        <item>Arm Curl</item>
+        <item>Triceps Press</item>
+        <item>Leg Extension</item>
+        <item>Leg Curl</item>
+        <item>Leg Press</item>
+    </string-array>
+
+</resources>
