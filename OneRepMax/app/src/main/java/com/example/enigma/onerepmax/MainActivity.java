@@ -4,6 +4,7 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
@@ -49,13 +50,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
                 if ((EWeight.getText().toString().trim().length() == 0)) {
                     TWeight.setError("Please enter weight");
-                    //inputLayoutPassword.setError(getString(R.string.err_msg_password));
+                    EWeight.requestFocus();
+
                 } else if (EReps.getText().toString().trim().length() == 0) {
                     TReps.setError("Please enter reps");
+                    TReps.requestFocus();
 
                 } else {
                     float result = GymBaja.calculate(Float.parseFloat(EWeight.getText().toString()), Float.parseFloat(EReps.getText().toString()));
-                    Result.setText("One rep Max of " + GymExc + " is: " + result + " kg");
+                    Result.setText("One rep Max of " + GymExc + " is: " + Math.round(result) + " kg");
+                    EReps.clearFocus();
+                    EWeight.clearFocus();
                 }
             }
         });
@@ -111,8 +116,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     private boolean validateReps() {
-        if (EReps.getText().toString().trim().isEmpty()) {
+        if (EReps.getText().toString().trim().length()==0) {
             TReps.setError("Please enter weight");
+            EReps.requestFocus();
             // requestFocus(inputName);
             return false;
         } else {
@@ -122,9 +128,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     private boolean validateWeight() {
-        if (EWeight.getText().toString().trim().isEmpty()) {
+        if (EWeight.getText().toString().trim().length()==0) {
             TWeight.setError("Please enter weight");
-            // requestFocus(inputName);
+            EWeight.requestFocus();
             return false;
         } else {
             TWeight.setErrorEnabled(false);
